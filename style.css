@@ -1,0 +1,49 @@
+/* Ambient Pink Glow behind the container */
+body::before {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255, 183, 197, 0.15) 0%, rgba(0,0,0,0) 70%);
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Container for all floating petals */
+#sakura-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 9999;
+    pointer-events: none; /* Allows clicking through the petals */
+}
+
+/* Individual Petal Style */
+.petal {
+    position: absolute;
+    background-color: #ffb7c5;
+    border-radius: 150% 0 150% 150%; /* Gives it a leaf/petal shape */
+    opacity: 0.8;
+    animation: fall linear infinite;
+    box-shadow: 0 0 8px rgba(255, 183, 197, 0.6); /* Soft pink glow on each leaf */
+}
+
+/* Falling Animation */
+@keyframes fall {
+    0% {
+        top: -10%;
+        transform: translateX(0) rotate(0deg);
+        opacity: 0.8;
+    }
+    100% {
+        top: 110%;
+        transform: translateX(100px) rotate(360deg);
+        opacity: 0;
+    }
+}
